@@ -1,0 +1,31 @@
+.recentProductCard {
+    border:1px solid rgb(226, 225, 225);
+}
+.recentProductCard h2 {
+    font-size: 35px;
+}
+.recentProductCard h3 {
+    font-size: 20px;
+    color: grey;
+}
+.recentProductCard button {
+    font-size: 20px;
+    background-color: transparent;
+    color: orange;
+    border: 1px solid orange;
+    border-radius: 5px;
+    padding: 3px 15px;
+
+    background-color: transparent;
+    color: orange;
+}
+.recentProductCard:hover button {
+    background-color: orange;
+color: white;
+    border: 1px solid orange;
+    transition: all ease-in-out 0.4s;
+    
+}
+.recentProductCard:hover {
+    cursor: pointer;
+}

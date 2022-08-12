@@ -1,0 +1,32 @@
+.headerSection {
+    background-color: rgb(209, 230, 237);
+}
+.container-fluid2 {
+    margin:0px 50px !important;
+}
+.carousel-item .row  {
+    height: 800px;
+}
+.sliderDescription {
+    width: 70%;
+}
+.sliderDescription h1 {
+    font-size: 60px;
+}
+.sliderDescription p {
+    font-size: 20px;
+    
+}
+.sliderDescription button {
+    font-size: 20px;
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 3px 15px;
+}
+.sliderDescription button:hover {
+    background-color: black;
+    color: white;
+    transition: all ease-in-out 0.4s;
+}
