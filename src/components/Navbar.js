@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "../assets/css/navbar.css";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCartProducts } from "../features/AddtocartSlice";
 const Navbar = () => {
+  const addToCart = useSelector(selectCartProducts);
+
   return (
     <>
       <nav className=" navbar navbar-expand-lg navbar-light bg-light p-3">
@@ -39,7 +43,7 @@ const Navbar = () => {
             </ul>
             <div className="d-flex align-items-center">
               <div className="cartIcon d-flex flex-column">
-                <span className="cartCount">0</span>
+                <span className="cartCount">{addToCart.length}</span>
                 <i class="fa-solid fa-cart-shopping"></i>
               </div>
               <p className="mx-1 cartIconPrice">34.5$</p>
