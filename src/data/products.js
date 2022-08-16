@@ -5,26 +5,30 @@ import product4 from "../assets/images/product_4.png";
 
 const recentProducts = [
   {
+    productId: 1,
     productName: "Product one",
-    productPrice: "34 $",
+    productPrice: 34,
     productImage: product1,
     productDescription: "This is good product ",
   },
   {
+    productId: 2,
     productName: "Product two",
-    productPrice: "44 $",
+    productPrice: 44.56,
     productImage: product2,
     productDescription: "This is good product ",
   },
   {
+    productId: 3,
     productName: "Product three",
-    productPrice: "37 $",
+    productPrice: 37,
     productImage: product3,
     productDescription: "This is good product ",
   },
   {
+    productId: 4,
     productName: "Product four",
-    productPrice: "38 $",
+    productPrice: 38,
     productImage: product4,
     productDescription: "This is good product ",
   },

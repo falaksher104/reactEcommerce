@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "../assets/css/navbar.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectCartProducts } from "../features/AddtocartSlice";
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const addToCart = useSelector(selectCartProducts);
-
+  console.log({ addToCart });
+  var totalCost = 0;
+  for (var a = 0; a < addToCart.length; a++) {
+    totalCost = addToCart[a].productPrice + totalCost;
+  }
   return (
     <>
       <nav className=" navbar navbar-expand-lg navbar-light bg-light p-3">
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <NavLink className="navbar-brand" exact to="/">
             Ecommerce
-          </a>
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -26,28 +31,40 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav m-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <NavLink
+                  className="nav-link active"
+                  aria-current="page"
+                  exact
+                  to="/"
+                >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <NavLink className="nav-link" exact to="/">
                   About
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <NavLink className="nav-link" exact to="/">
                   Contact
-                </a>
+                </NavLink>
               </li>
             </ul>
-            <div className="d-flex align-items-center">
-              <div className="cartIcon d-flex flex-column">
-                <span className="cartCount">{addToCart.length}</span>
-                <i class="fa-solid fa-cart-shopping"></i>
+            <NavLink exact to="/cartproduct">
+              <div className="d-flex align-items-center">
+                <div className="cartIcon d-flex flex-column">
+                  {addToCart.length > 0 && (
+                    <span className="cartCount">{addToCart.length}</span>
+                  )}
+
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                {totalCost > 0 && (
+                  <p className="mx-1 cartIconPrice">{totalCost} $</p>
+                )}
               </div>
-              <p className="mx-1 cartIconPrice">34.5$</p>
-            </div>
+            </NavLink>
           </div>
         </div>
       </nav>

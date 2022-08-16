@@ -1,9 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../assets/css/recentproduct.css";
-
+import { NavLink } from "react-router-dom";
 import recentProducts from "../data/products";
 import {
+  addSingleProductDetail,
   addToCartProduct,
   selectCartProducts,
 } from "../features/AddtocartSlice";
@@ -12,13 +13,6 @@ const RecentProducts = () => {
   const dispatch = useDispatch();
   const addToCart = useSelector(selectCartProducts);
   console.log(addToCart);
-  // for (var key in addToCart) {
-  //   if (addToCart.hasOwnProperty(key)) {
-  //     console.log(key + " -> " + addToCart[key]);
-  //     console.log({ key });
-  //   }
-  // }
-
   return (
     <>
       <div className="recentProducts container my-5">
@@ -29,6 +23,7 @@ const RecentProducts = () => {
           {recentProducts.map((elem, index) => {
             // Object destructuring
             const {
+              productId,
               productName,
               productPrice,
               productImage,
@@ -37,18 +32,36 @@ const RecentProducts = () => {
             return (
               <div className="col-lg-3 col-md-6 col-12" key={index}>
                 <div className="recentProductCard">
-                  <img src={productImage} alt="producImage" />
-                  <h2 className="mx-4 my-2">{productName} </h2>
-                  <h3 className="mx-4 my-2">{productPrice}</h3>
-                  <p className="mx-4 my-2">{productDescription} </p>
+                  <NavLink exact to="/product">
+                    <img
+                      src={productImage}
+                      alt="producImage"
+                      onClick={() => {
+                        dispatch(
+                          addSingleProductDetail({
+                            productId: productId,
+                            productName: productName,
+                            productPrice: productPrice,
+                            productImage: productImage,
+                            productDescription: productDescription,
+                          })
+                        );
+                      }}
+                    />
+                  </NavLink>
+                  <h2 className="mx-4 my-2 text-center">{productName} </h2>
+                  <h3 className="mx-4 my-2 text-center">{productPrice} $</h3>
                   <div className="text-center">
                     <button
                       className="mb-5"
                       onClick={() => {
                         dispatch(
                           addToCartProduct({
+                            productId: productId,
                             productName: productName,
                             productPrice: productPrice,
+                            productImage: productImage,
+                            productDescription: productDescription,
                           })
                         );
                       }}
