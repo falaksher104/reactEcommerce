@@ -12,7 +12,14 @@ import {
 const RecentProducts = () => {
   const dispatch = useDispatch();
   const addToCart = useSelector(selectCartProducts);
-  console.log(addToCart);
+  var dummyArray = [];
+  for (var i = 0; i < addToCart.length; i++) {
+    const pName = addToCart[i].productName;
+    if (!dummyArray.includes(pName)) {
+      dummyArray.push(pName);
+    }
+  }
+  console.log({ dummyArray });
   return (
     <>
       <div className="recentProducts container my-5">
@@ -52,22 +59,34 @@ const RecentProducts = () => {
                   <h2 className="mx-4 my-2 text-center">{productName} </h2>
                   <h3 className="mx-4 my-2 text-center">{productPrice} $</h3>
                   <div className="text-center">
-                    <button
-                      className="mb-5"
-                      onClick={() => {
-                        dispatch(
-                          addToCartProduct({
-                            productId: productId,
-                            productName: productName,
-                            productPrice: productPrice,
-                            productImage: productImage,
-                            productDescription: productDescription,
-                          })
-                        );
-                      }}
-                    >
-                      Add to cart
-                    </button>
+                    {dummyArray.includes(elem.productName) ? (
+                      <p>
+                        <b>{elem.productName}</b> is add to cart
+                        <p>
+                          click here to
+                          <NavLink exact to="/cartproduct">
+                            <b className="text-success"> view cart</b>
+                          </NavLink>
+                        </p>
+                      </p>
+                    ) : (
+                      <button
+                        className="mb-2"
+                        onClick={() => {
+                          dispatch(
+                            addToCartProduct({
+                              productId: productId,
+                              productName: productName,
+                              productPrice: productPrice,
+                              productImage: productImage,
+                              productDescription: productDescription,
+                            })
+                          );
+                        }}
+                      >
+                        Add to cart
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

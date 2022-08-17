@@ -58,7 +58,7 @@ const Navbar = () => {
                     <span className="cartCount">{addToCart.length}</span>
                   )}
 
-                  <i class="fa-solid fa-cart-shopping"></i>
+                  <i className="fa-solid fa-cart-shopping"></i>
                 </div>
                 {totalCost > 0 && (
                   <p className="mx-1 cartIconPrice">{totalCost} $</p>
